@@ -31,10 +31,13 @@ namespace Wanted
 		// 액터에 이벤트 흘리기
 		for(Actor* actor : actors)
 		{
-			// Todo: 이미 BeginPlay 호출된 엑터는 건너뛰기 
+			if(actor->HasBeganPlay())
+			{
+				continue;
+			}
+			
 			actor->BeginPlay();
 		}
-
 
 	}
 
@@ -55,5 +58,14 @@ namespace Wanted
 		{
 			actor->Draw();
 		}
+	}
+
+	void Level::AddNewActor(Actor* newActor)
+	{
+		//Todo : 나중에 프레임 처리 고려해서 따로 추가 작업 해야함.
+
+		//actors.push_back(newActor); // l-value reference 최근에는 업데이트되서 r-value reference도 사용되기도 하지만 가끔 오래된 버전이 사용되서 문제
+		actors.emplace_back(newActor); // r-value reference
+
 	}
 }

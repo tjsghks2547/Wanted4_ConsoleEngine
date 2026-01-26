@@ -33,6 +33,9 @@ namespace Wanted
 		bool GetKeyUp(int keyCode); // 이전에 입력이 됐는데, 현재 입력이 취소 됐으면,
 		bool GetKey(int keyCode); // 현재 눌려있으면 반복 호출. 
 
+		// 새 레벨을 추가(설정)하는 함수
+		void SetNewLevel(class Level* newLevel);
+
 	private:
 		// 입력 처리 함수
 		void ProcessInput(); 
@@ -46,8 +49,7 @@ namespace Wanted
 		// 그리기 함수 ( Draw/Render ) 
 		void Draw(); 
 
-		// 새 레벨을 추가(설정)하는 함수
-		void SetNewLevel(class Level* newLevel);
+		
 
 
 

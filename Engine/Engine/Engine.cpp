@@ -13,7 +13,11 @@ namespace Wanted
 
 	Engine::~Engine()
 	{
-
+		if(mainLevel)
+		{
+			delete mainLevel;
+			mainLevel = nullptr; 
+		}
 	}
 
 	void Engine::Run()
@@ -141,14 +145,14 @@ namespace Wanted
 	void Engine::Tick(float deltaTime)
 	{
 		/*std::cout << "DeltaTime : " << deltaTime
-			<< ", FPS : " << ( 1.0f / deltaTime ) << "\n";
+			<< ", FPS : " << ( 1.0f / deltaTime ) << "\n";*/
 
 
 
 		if(GetKeyDown(VK_ESCAPE))
 		{
 			QuitEngine();
-		}*/
+		}
 
 		if(!mainLevel)
 		{
