@@ -1,4 +1,5 @@
 #include "Engine.h"  //ctrl + k +o 
+#include "Level/Level.h"
 #include <iostream>
 #include <Windows.h>
 
@@ -61,6 +62,7 @@ namespace Wanted
 				ProcessInput();
 
 				// 프레임 처리 
+				BeginPlay();
 				Tick(deltaTime);
 				Draw();
 
@@ -122,9 +124,23 @@ namespace Wanted
 
 	}
 
+	void Engine::BeginPlay()
+	{
+
+		// 레벨이 있으면 이벤트 전달 
+		if(!mainLevel)
+		{
+			std::cout << "main Level is empty.\n";
+			return; 
+		}
+
+		mainLevel->BeginPlay();
+
+	}
+
 	void Engine::Tick(float deltaTime)
 	{
-		std::cout << "DeltaTime : " << deltaTime
+		/*std::cout << "DeltaTime : " << deltaTime
 			<< ", FPS : " << ( 1.0f / deltaTime ) << "\n";
 
 
@@ -132,12 +148,40 @@ namespace Wanted
 		if(GetKeyDown(VK_ESCAPE))
 		{
 			QuitEngine();
+		}*/
+
+		if(!mainLevel)
+		{
+			std::cout << "Error : Engine::Tick(). mainLevel is empty.\n";
+			return;
 		}
+
+		mainLevel->Tick(deltaTime);
 	}
 
 	void Engine::Draw()
 	{
+		if (!mainLevel)
+		{
+			std::cout << "Error : Engine::Draw(). mainLevel is empty.\n";
+			return;
+		}
 
+		mainLevel->Draw();
+	}
+	void Engine::SetNewLevel(Level* newLevel)
+	{
+		// 기존 레벨 있는지 확인
+		// 있으면 기존 레벨 제거 
+		// @Todo: 임시 코드. 레벨 전환할 때는 바로 제거하면 안됨.
+		if(mainLevel)
+		{
+			delete mainLevel;
+			mainLevel = nullptr; 
+		}
+
+		// 레벨 설정
+		mainLevel = newLevel; 
 	}
 }
  
