@@ -1,8 +1,10 @@
 #pragma once
 
+#include "Common/Common.h"
+
 namespace Wanted
 {
-	class Actor
+	class WANTED_API Actor  //__declspec(dllexport) 외부에서 접근가능하게 만드는 키워드
 	{
 	public:
 		Actor();

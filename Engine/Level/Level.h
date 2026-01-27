@@ -1,17 +1,18 @@
 #pragma once
+#pragma warning(disable: 4251) // 미봉책 (방법 없음).
 
 //STL(Standard Template Library - C++에서 기본 제공)
 #include <vector>
-
+#include "Common/Common.h"
 
 
 namespace Wanted
 {
 	// 전방 선언.
-	class Actor;
+	class  Actor;
 
 	// 담당 임무 : 레벨에 있는 모든 액터(물체) 관리
-	class Level
+	class WANTED_API Level
 	{
 	public:
 		Level();

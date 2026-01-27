@@ -1,9 +1,10 @@
 #pragma once
+#include "Common/Common.h"
 
 namespace Wanted
 {
 	// Main Game Engine class.
-	class Engine
+	class WANTED_API Engine
 	{
 		// ตฅภฬลอ.
 		// 
