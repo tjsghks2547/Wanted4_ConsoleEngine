@@ -1,11 +1,14 @@
 #pragma once
 
-#include "Common/Common.h"
+#include "RTTI.h"
 
 namespace Wanted
 {
-	class WANTED_API Actor
+	class WANTED_API Actor : public RTTI
 	{
+		//RTTI 코드추가
+		RTTI_DECLARATIONS(Actor, RTTI)
+
 	public:
 		Actor();
 		virtual ~Actor();
