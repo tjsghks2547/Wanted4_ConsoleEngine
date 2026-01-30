@@ -63,4 +63,13 @@ namespace Wanted
 		return !(*this == other);
 		//(x != other.x) || ( y != other.y);
 	}
+
+	Vector2::operator COORD() const
+	{
+		COORD coord = {};
+		coord.X = static_cast<short>(x);
+		coord.Y = static_cast<short>(y);
+
+		return coord;
+	}
 }

@@ -51,7 +51,7 @@ namespace Wanted
 }
 
 // RTTI를 선언할 클래스에 추가할 매크로.
-// 아래 코드에서 Type, ParentType이 실제 타입으로 변환되어 복사/붙여넣기 됨.
+// 아래 코드에서 Type, ParentType이 실제 타입으로 변환되어 복사/붙여넣기 됨. //전역변수의 메모리는 데이터영역에 저장되는 고유한 주소이므로 이걸 이용.
 #define RTTI_DECLARATIONS(Type, ParentType)												\
 friend class RTTI;																		\
 protected:																				\

@@ -1,27 +1,32 @@
-#include "TestActor.h"
+#include "Player.h"
 #include "Core/Input.h"
 #include "Engine/Engine.h"
+#include "Actor/Box.h"
+#include "Level/Level.h"
+
+
+
 #include <iostream>
 #include <Windows.h>
 
 using namespace Wanted;
 
-TestActor::TestActor()
-	:super('T', Vector2(2,3))
+Player::Player()
+	:super('P', Vector2(5,5),Color::Red)
 {
 
 }
 
-void TestActor::BeginPlay()
+void Player::BeginPlay()
 {
 	// 상위 함수 호출.
 	// C++는 부모함수 가리키는 포인터가 없음.
 	Actor::BeginPlay();
 
-	//std::cout << "TestActor::BeginPlay().\n";
+	//std::cout << "Player::BeginPlay().\n";
 }
 
-void TestActor::Tick(float deltaTime)
+void Player::Tick(float deltaTime)
 {
 	super::Tick(deltaTime);
 
@@ -41,7 +46,7 @@ void TestActor::Tick(float deltaTime)
 		SetPosition(newPosition);
 	}
 
-	if (Input::Get().GetKey('S') && GetPosition().y < 20)
+	if (Input::Get().GetKey('S') && GetPosition().y < 15)
 	{
 		Vector2 newPosition = GetPosition();
 		newPosition.y += 1;
@@ -67,15 +72,27 @@ void TestActor::Tick(float deltaTime)
 	}
 
 
+	// 스페이스로 박스 생성.
+	if (Input::Get().GetKeyDown(VK_SPACE))
+	{
+		if(owner)
+		{
+			owner->AddNewActor(new Box(GetPosition()));	
+		}
+		// 박스 생성. 
+		
+	}
 
 
 
 	//std::cout 
-	//	<< "TestActor::Tick(). deltaTime: " << deltaTime
+	//	<< "Player::Tick(). deltaTime: " << deltaTime
 	//	<< ", FPS: " << (1.0f / deltaTime) << "\n";
 }
 
-void TestActor::Draw()
+void Player::Draw()
 {
 	Actor::Draw();
+
+
 }
