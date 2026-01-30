@@ -14,7 +14,7 @@ using namespace Wanted;
 Player::Player()
 	:super('P', Vector2(5,5),Color::Red)
 {
-
+	sortingOrder = 10; 
 }
 
 void Player::BeginPlay()
