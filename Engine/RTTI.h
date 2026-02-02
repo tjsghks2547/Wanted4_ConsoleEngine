@@ -24,6 +24,14 @@ namespace Wanted
 		{
 			return false;
 		}
+
+		// 타입 질문 함수 
+		template<typename T>
+		bool isTypeOf()
+		{
+			return Is(T::TypeIdClass());
+		}
+
 	
 		template<typename T>
 		T* As()

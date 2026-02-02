@@ -1,4 +1,4 @@
-#include "TestLevel.h"
+#include "SokobanLevel.h"
 #include "Actor/Player.h"
 #include "Actor/Wall.h"
 #include "Actor/Ground.h"
@@ -18,7 +18,7 @@
 
 
 
-TestLevel::TestLevel()
+SokobanLevel::SokobanLevel()
 {
 	// Player 액터를 레벨에 추가.
 	//AddNewActor(new Player());
@@ -26,7 +26,7 @@ TestLevel::TestLevel()
 	//LoadMap("Stage1.txt");
 }
 
-void TestLevel::LoadMap(const char* filename)
+void SokobanLevel::LoadMap(const char* filename)
 {
 	// 파일로드 
 	// 최종 파일 경로 만들기 ("../Assets/filename")
@@ -166,5 +166,29 @@ void TestLevel::LoadMap(const char* filename)
 	// 파일이 정상적으로 열렸으면 닫기. 
 	fclose(file);
 
+
+}
+
+bool SokobanLevel::CanMove(
+	const Wanted::Vector2& playerPosition, 
+	const Wanted::Vector2& nextPosition)
+{
+	// 레벨에 있는 박스 액터 모으기
+	// 박스는 플레이어가 밀기 등 추가적으로 처리해야하기 때문.
+	std::vector<Actor*> boxes; 
+	
+	
+	// 레벨에 배치된 전체 액터를 순회하면서 박스 찾기.
+	for(Actor* const actor : actors)
+	{
+		// 액터가 박스 타입인지 확인, 
+		if (actor->isTypeOf<Box>())	
+		{
+			boxes.emplace_back(actor);	
+			continue;
+		}
+	}
+
+	return false;
 
 }
