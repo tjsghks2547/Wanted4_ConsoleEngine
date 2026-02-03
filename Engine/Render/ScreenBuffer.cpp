@@ -1,5 +1,6 @@
 #include "ScreenBuffer.h"
 #include <iostream>
+#include "Renderer.h"
 
 namespace Wanted
 {
@@ -83,6 +84,7 @@ namespace Wanted
 
 	}
 
+
 	void ScreenBuffer::Clear()
 	{
 		// 실제로 화면을 지우고 난 뒤에 
@@ -101,6 +103,8 @@ namespace Wanted
 		);
 
 	}
+
+
 
 	void ScreenBuffer::Draw(CHAR_INFO* charInfo)
 	{
