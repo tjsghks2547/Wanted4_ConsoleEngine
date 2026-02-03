@@ -26,12 +26,6 @@ namespace Wanted
 		// 형변환 연산자 오버로딩.
 		operator COORD() const;
 
-
-
-
-
-
-
 		// 벡터 기본 값
 		static Vector2 Zero;
 		static Vector2 One;
